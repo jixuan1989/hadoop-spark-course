@@ -147,28 +147,21 @@ public class FileSystemOperations {
 
     public static void main(String[] args) throws IOException {
 
+//        args = new String[]{"192.144.187.79", "9000", "mkdir", "/test"};
+//        args = new String[]{"192.144.187.79", "9000", "add", ".gitignore", "/test"};
+        args = new String[]{"192.144.187.79", "9000", "delete", "/test/.gitignore"};
+
         if (args.length < 1) {
-            System.out.println("Usage: hdfsclient add/read/delete/mkdir"
+            System.out.println("Usage: hdfsmaster add/read/delete/mkdir"
                     + " [<local_path> <hdfs_path>]");
             System.exit(1);
         }
 
         FileSystemOperations client = new FileSystemOperations();
-        String hdfsPath = "hdfs://" + args[0] + ":" + args[1];
 
         Configuration conf = new Configuration();
-        System.getProperties().put("HADOOP_USER_NAME","root");
-        // Providing conf files
-        // conf.addResource(new Path(HDFSAPIDemo.class.getResource("/conf/core-site.xml").getFile()));
-        // conf.addResource(new Path(HDFSAPIDemo.class.getResource("/conf/hdfs-site.xml").getFile()));
-        // (or) using relative paths
-        //    conf.addResource(new Path(
-        //        "/u/hadoop-1.0.2/conf/core-site.xml"));
-        //    conf.addResource(new Path(
-        //        "/u/hadoop-1.0.2/conf/hdfs-site.xml"));
-
-        //(or)
-        // alternatively provide namenode host and port info
+        System.getProperties().put("HADOOP_USER_NAME","hxd");
+        String hdfsPath = "hdfs://" + args[0] + ":" + args[1];
         conf.set("fs.default.name", hdfsPath);
 
         if (args[2].equals("add")) {
@@ -194,7 +187,7 @@ public class FileSystemOperations {
                 System.exit(1);
             }
 
-            client.deleteFile(args[1], conf);
+            client.deleteFile(args[3], conf);
 
         } else if (args[2].equals("mkdir")) {
             if (args.length < 4) {
