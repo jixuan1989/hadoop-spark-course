@@ -147,7 +147,9 @@ import org.apache.hadoop.fs.Path;
 //        args = new String[]{"192.144.187.79", "9000", "mkdir", "/test"};
 //        args = new String[]{"192.144.187.79", "9000", "add", ".gitignore", "/test"};
 //        args = new String[]{"192.144.187.79", "9000", "delete", "/test/.gitignore"};
-        args = new String[]{"192.144.187.79", "9000", "read", "/test/hadoop"};
+//        args = new String[]{"192.144.187.79", "9000", "read", "/test/hadoop"};
+
+//        System.getProperties().put("HADOOP_USER_NAME","hxd");
 
         if (args.length < 1) {
             System.out.println("Usage: hdfsmaster add/read/delete/mkdir"
@@ -158,7 +160,7 @@ import org.apache.hadoop.fs.Path;
         FileSystemOperations client = new FileSystemOperations();
         Configuration conf = new Configuration();
         conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
-        System.getProperties().put("HADOOP_USER_NAME","hxd");
+//        System.getProperties().put("HADOOP_USER_NAME","hxd");
         String hdfsPath = "hdfs://" + args[0] + ":" + args[1];
         conf.set("fs.default.name", hdfsPath);
 

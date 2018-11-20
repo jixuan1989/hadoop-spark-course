@@ -7,7 +7,8 @@ object WordCount {
   def main(args: Array[String]): Unit = {
 
     // init spark context
-    val conf = new SparkConf().setAppName("wordcount").setMaster("local")
+    val conf = new SparkConf().setAppName("wordcount")//.setMaster("spark://node1:7077")
+      .setMaster("local")
     val sc = new SparkContext(conf)
 
     // read file
