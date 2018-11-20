@@ -50,8 +50,8 @@ public class WordCount {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(LongWritable.class);
 
-        FileInputFormat.addInputPath(job, new Path("hdfs://localhost:9000/core-site.xml"));
-        FileOutputFormat.setOutputPath(job, new Path("hdfs://localhost:9000/output/"));
+        FileInputFormat.addInputPath(job, new Path("hdfs://node1:9000/test/hadoop"));
+        FileOutputFormat.setOutputPath(job, new Path("hdfs://node1:9000/output/"));
 
         int res = job.waitForCompletion(true) ? 0 : 1;
         System.out.println(res);

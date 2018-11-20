@@ -18,7 +18,7 @@ import org.apache.hadoop.fs.Path;
  * modified from https://gist.githubusercontent.com/ashrithr/f7899fdfd36ee800f151/raw/6b4678a2e406b54ff3ddc56d149664b876b52e33/FIleSystemOperations.java
  *
  */
-public class FileSystemOperations {
+    public class FileSystemOperations {
     public FileSystemOperations() {
 
     }
@@ -133,7 +133,7 @@ public class FileSystemOperations {
 
         Path path = new Path(dir);
         if (fileSystem.exists(path)) {
-            System.out.println("Dir " + dir + " already not exists");
+            System.out.println("Dir " + dir + " already exists");
             return;
         }
 
@@ -146,7 +146,8 @@ public class FileSystemOperations {
 
 //        args = new String[]{"192.144.187.79", "9000", "mkdir", "/test"};
 //        args = new String[]{"192.144.187.79", "9000", "add", ".gitignore", "/test"};
-        args = new String[]{"192.144.187.79", "9000", "delete", "/test/.gitignore"};
+//        args = new String[]{"192.144.187.79", "9000", "delete", "/test/.gitignore"};
+        args = new String[]{"192.144.187.79", "9000", "read", "/test/hadoop"};
 
         if (args.length < 1) {
             System.out.println("Usage: hdfsmaster add/read/delete/mkdir"

@@ -13,13 +13,13 @@ import java.net.URISyntaxException;
 public class FindFile {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        getFileLocal("/mydata.txt");
+        getFileLocal("/test/hadoop");
     }
 
     public static void getFileLocal(String file) throws IOException, URISyntaxException {
         Configuration conf = new Configuration();
         conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"), conf);
+        FileSystem fs = FileSystem.get(new URI("hdfs://node1:9000"), conf);
         Path path = new Path(file);
 
         FileStatus status = fs.getFileStatus(path);
