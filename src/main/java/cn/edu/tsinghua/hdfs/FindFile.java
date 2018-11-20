@@ -18,6 +18,7 @@ public class FindFile {
 
     public static void getFileLocal(String file) throws IOException, URISyntaxException {
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"), conf);
         Path path = new Path(file);
 

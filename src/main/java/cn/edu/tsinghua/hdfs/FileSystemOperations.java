@@ -158,8 +158,8 @@ public class FileSystemOperations {
         }
 
         FileSystemOperations client = new FileSystemOperations();
-
         Configuration conf = new Configuration();
+        conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
         System.getProperties().put("HADOOP_USER_NAME","hxd");
         String hdfsPath = "hdfs://" + args[0] + ":" + args[1];
         conf.set("fs.default.name", hdfsPath);

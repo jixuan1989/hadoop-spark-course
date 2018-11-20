@@ -14,8 +14,9 @@ public class ReadFile {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
-            FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"), conf);
-            Path file = new Path("/output/part-r-00000");
+            conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
+            FileSystem fs = FileSystem.get(new URI("hdfs://192.144.187.79:9000"), conf);
+            Path file = new Path("/test/core-site.xml");
             FSDataInputStream getIt = fs.open(file);
             BufferedReader d = new BufferedReader(new InputStreamReader(getIt));
             String s;
