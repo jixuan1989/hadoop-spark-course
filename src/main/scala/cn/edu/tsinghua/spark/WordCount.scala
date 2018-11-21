@@ -8,11 +8,11 @@ object WordCount {
 
     // init spark context
     val conf = new SparkConf().setAppName("wordcount")//.setMaster("spark://node1:7077")
-      .setMaster("local")
+   //   .setMaster("local")
     val sc = new SparkContext(conf)
 
     // read file
-    val textRdd = sc.textFile("pom.xml")
+    val textRdd = sc.textFile("/test/hadoop")
 
     // map reduce
     val result = textRdd.map(word => (word, 1)).reduceByKey(_+_)
